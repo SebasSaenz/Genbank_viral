@@ -4,6 +4,9 @@
 # Snakemake
 .snakemake/
 
+# quarto 
+index_files/
+
 # Folders
 rawdata/
 

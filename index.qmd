@@ -1,0 +1,7 @@
+---
+title: "Viral genomes in the NCBI database"
+author: "Johan S. Sáenz"
+format: html
+---
+
+![](plots/genbank.png)
