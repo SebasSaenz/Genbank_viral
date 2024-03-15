@@ -1,3 +1,12 @@
+# Mac
+.DS_Store
+
+# Snakemake
+.snakemake/
+
+# Folders
+rawdata/
+
 # History files
 .Rhistory
 .Rapp.history
