@@ -29,4 +29,5 @@ read_tsv("rawdata/clean_genomes_data.tsv") %>%
     panel.border = element_rect(colour = "black", fill = NA, linewidth = 2)
   )
 
+
 ggsave("plots/genbank.png", dpi = 450, width = 6, height = 6)
