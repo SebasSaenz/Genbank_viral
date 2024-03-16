@@ -7,7 +7,6 @@
 # quarto
 /.quarto/
 /_site/
-index_files/
 
 # Folders
 rawdata/
