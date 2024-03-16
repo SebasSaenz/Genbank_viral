@@ -1,5 +1,10 @@
-#!/usr/bin/env Rscript
+---
+title: "Jumbo Phages"
+date: 2022-09-12
+format: html
+---
 
+```{r echo = FALSE, message=FALSE}
 library(tidyverse)
 library(plotly)
 
@@ -30,6 +35,5 @@ plot<- read_tsv("rawdata/clean_genomes_data.tsv") %>%
     panel.border = element_rect(colour = "black", fill = NA, linewidth = 2)
   )
 
-interactive_pot <- ggplotly(plot)
-
-ggsave("plots/genbank.png", dpi = 450, width = 6, height = 6)
+ggplotly(plot)
+```

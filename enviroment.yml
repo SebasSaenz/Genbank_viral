@@ -7,4 +7,5 @@ channels:
 dependencies:
   - r-base=4.3.3
   - r-tidyverse=2.0.0
+  - r-plotly=4.10.4
   - snakemake=8.7.0

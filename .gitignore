@@ -4,7 +4,9 @@
 # Snakemake
 .snakemake/
 
-# quarto 
+# quarto
+/.quarto/
+/_site/
 index_files/
 
 # Folders
@@ -59,3 +61,5 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+/.quarto/
