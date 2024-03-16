@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: .
 
 website:
   title: "NCBI viral genomes"
@@ -13,3 +14,9 @@ website:
   page-footer:
     left: |
       Site developed by Johan S. Saenz
+
+format:
+  html:
+    theme: cosmo
+    css: style.css
+    toc: true
