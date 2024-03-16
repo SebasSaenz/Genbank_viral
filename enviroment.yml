@@ -8,4 +8,5 @@ dependencies:
   - r-base=4.3.3
   - r-tidyverse=2.0.0
   - r-plotly=4.10.4
+  - r-ggdist=3.3.2
   - snakemake=8.7.0

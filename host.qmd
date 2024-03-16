@@ -1,0 +1,38 @@
+---
+title: "Jumbo Phages"
+date: 2022-09-12
+format: html
+---
+
+hjshadhahdsa
+
+```{r echo = FALSE, message=FALSE}
+library(tidyverse)
+library(plotly)
+
+plot <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
+    select(host) %>%
+    count(host) %>%
+    filter(n > 50) %>%
+    ggplot(aes(
+        x = n,
+        y = fct_reorder(host, n)
+    )) +
+    geom_col() +
+    scale_x_continuous(
+        expand = c(0, 0),
+        limits = c(0, 3500),
+        breaks = seq(0, 3500, 500)
+    ) +
+    labs(
+        x = NULL,
+        y = "Number of phages"
+    ) +
+    theme(
+        text = element_text(size = 12, family = "Cabin Sketch"),
+        panel.background = element_blank(),
+        panel.border = element_rect(colour = "black", fill = NA, linewidth = 2)
+    )
+
+ggplotly(plot)
+```

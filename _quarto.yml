@@ -6,16 +6,19 @@ website:
   title: "NCBI viral genomes"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
       - href: jumbophages.qmd
         text: Jumbo Phages
       - href: genome_size.qmd
         text: Genome size 
+      - href: type_molecule.qmd
+        text: Molecule type
+      - href: host.qmd
+        text: Host
 
   page-footer:
     left: |
-      Site developed by Johan S. Saenz
+      Site [developed](https://github.com/SebasSaenz/Genbank_viral) 
+      by [Johan S. Saenz](https://sebassaenz.github.io/website/)
 
 format:
   html:

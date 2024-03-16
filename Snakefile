@@ -1,7 +1,8 @@
 rule targets:
     input:
         "rawdata/genomes_data.tsv",
-        "rawdata/clean_genomes_data.tsv"
+        "rawdata/clean_genomes_data.tsv",
+        "docs/index.html"
 
 rule get_data:
     input:
@@ -34,4 +35,15 @@ rule plot_data:
     shell:
         """
         {input.r_script}
+        """
+
+rule render_website:
+    input:
+        qmd = "index.qmd",
+        data = "rawdata/clean_genomes_data.tsv"
+    output:
+        "docs/index.html"
+    shell:
+        """
+        quarto render
         """

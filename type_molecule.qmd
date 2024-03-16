@@ -1,0 +1,36 @@
+---
+title: "Phage type"
+date: 2024-03-16
+format: html
+---
+
+
+```{r echo = FALSE, message=FALSE}
+library(tidyverse)
+library(plotly)
+
+plot <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
+    select(molecule) %>%
+    count(molecule) %>%
+    ggplot(aes(
+        x = molecule,
+        y = n
+    )) +
+    geom_col() +
+    scale_y_continuous(
+        expand = c(0, 0),
+        limits = c(0, 30000),
+        breaks = seq(0, 300000, 3000)
+    ) +
+    labs(
+        x = NULL,
+        y = "Number of phages"
+    ) +
+    theme(
+        text = element_text(size = 15, family = "Cabin Sketch"),
+        panel.background = element_blank(),
+        panel.border = element_rect(colour = "black", fill = NA, linewidth = 2)
+    )
+
+ggplotly(plot)
+```
