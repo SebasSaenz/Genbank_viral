@@ -1,5 +1,5 @@
 ---
-title: "Jumbo Phages"
+title: "Genome size"
 date: 2022-09-12
 format: html
 ---
@@ -9,23 +9,22 @@ library(tidyverse)
 library(plotly)
 
 plot <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
-    select(jumbophage) %>%
-    count(jumbophage) %>%
-    mutate(jumbophage = if_else(jumbophage == FALSE, "No Jumbo Phage",
+    select(genome_lengtn_bp, jumbophage) %>%
+    mutate(jumbophage = if_else(jumbophage == FALSE,
+        "No Jumbo Phage",
         "Jumbo Phage"
     )) %>%
     ggplot(aes(
         x = jumbophage,
-        y = n
+        y = genome_lengtn_bp
     )) +
-    geom_col() +
+    geom_boxplot() +
     scale_y_continuous(
         expand = c(0, 0),
-        limits = c(0, 30000),
-        breaks = seq(0, 300000, 3000)
+        limits = c(0, 600000),
+        breaks = seq(0, 600000, 50000)
     ) +
     labs(
-        title = "Number of Jumbo Phages",
         x = NULL,
         y = "Number of phages"
     ) +

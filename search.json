@@ -1,0 +1,9 @@
+[
+  {
+    "objectID": "genome_size.html",
+    "href": "genome_size.html",
+    "title": "Jumbo Phages",
+    "section": "",
+    "text": "library(tidyverse) library(plotly)\nplot &lt;- read_tsv(“rawdata/clean_genomes_data.tsv”) %&gt;% select(genome_lengtn_bp, jumbophage) %&gt;% mutate(jumbophage = if_else(jumbophage == FALSE, “No Jumbo Phage”, “Jumbo Phage” )) %&gt;% ggplot(aes( x = jumbophage, y = genome_lengtn_bp )) + geom_boxplot() + scale_y_continuous( expand = c(0, 0), limits = c(0, 600000), breaks = seq(0, 600000, 50000) ) + labs( x = NULL, y = “Number of phages” ) + theme( text = element_text(size = 15, family = “Cabin Sketch”), panel.background = element_blank(), panel.border = element_rect(colour = “black”, fill = NA, linewidth = 2) )\nggplotly(plot)"
+  }
+]
