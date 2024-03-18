@@ -1,10 +1,25 @@
 ---
 title: "Jumbo Phages"
 date: 2022-09-12
-format: html
+format:
+    html:
+        code-fold: true
+        code-summary: "Show the code"
+        highlight-style: github
+        code-block-border-left: true
+        code-copy: true
+
 ---
 
-```{r echo = FALSE, message=FALSE}
+# Jumbophage genomes
+
+Jumbo phage genomes are around 200kb and currently there are 
+
+```{r message=FALSE }
+#| out-width: 70%
+#| out-height: 50%
+
+
 library(tidyverse)
 library(plotly)
 
@@ -25,7 +40,6 @@ plot <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
         breaks = seq(0, 300000, 3000)
     ) +
     labs(
-        title = "Number of Jumbo Phages",
         x = NULL,
         y = "Number of phages"
     ) +

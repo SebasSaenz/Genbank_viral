@@ -4,6 +4,7 @@ project:
 
 website:
   title: "NCBI viral genomes"
+  twitter-card: true
   navbar:
     left:
       - href: jumbophages.qmd
@@ -14,6 +15,10 @@ website:
         text: Molecule type
       - href: host.qmd
         text: Host
+    tools:
+      - icon: twitter
+        href: https://twitter.com/SaenzJohanS
+        text: Quarto Twitter
 
   page-footer:
     left: |
@@ -22,6 +27,6 @@ website:
 
 format:
   html:
-    theme: sketchy
+    theme: minty
     css: style.css
     toc: true

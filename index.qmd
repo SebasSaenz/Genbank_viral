@@ -1,6 +1,26 @@
 ---
-title: "Diamond sizes"
+title: "Home"
 date: 2022-09-12
 format: 
     html: default
 ---
+
+```{r echo=FALSE, message=FALSE}
+library(tidyverse)
+
+number_genomes <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
+    count()
+```
+
+# Bacteriophage genomes in NCBI
+There are **`r number_genomes `** in the **NCBI**.
+
+## Workflow
+
+
+## Updates
+Currently the website is manually updated each month. Statistics and plots are created using the monthly published [INPHARED](https://github.com/RyanCook94/inphared) dataset.  
+
+Last update `r today()`
+
+## Author
