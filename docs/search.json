@@ -7,13 +7,6 @@
     "text": "hjshadhahdsa"
   },
   {
-    "objectID": "genome_size.html",
-    "href": "genome_size.html",
-    "title": "Genome size",
-    "section": "",
-    "text": "Warning in geom2trace.default(dots[[1L]][[1L]], dots[[2L]][[1L]], dots[[3L]][[1L]]): geom_GeomSlabinterval() has yet to be implemented in plotly.\n  If you'd like to see this geom implemented,\n  Please open an issue with your example code at\n  https://github.com/ropensci/plotly/issues"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Home",
@@ -28,17 +21,17 @@
     "text": "Currently the website is manually updated each month. Statistics and plots are created using the monthly published INPHARED dataset.\nLast update 2024-03-18"
   },
   {
-    "objectID": "index.html#author",
-    "href": "index.html#author",
-    "title": "Home",
-    "section": "Author",
-    "text": "Author"
-  },
-  {
     "objectID": "jumbophages.html",
     "href": "jumbophages.html",
     "title": "Jumbo Phages",
     "section": "",
     "text": "Jumbophage genomes\nJumbo phage genomes are around 200kb and currently there are\n\n\nShow the code\nlibrary(tidyverse)\nlibrary(plotly)\n\nplot &lt;- read_tsv(\"rawdata/clean_genomes_data.tsv\") %&gt;%\n    select(jumbophage) %&gt;%\n    count(jumbophage) %&gt;%\n    mutate(jumbophage = if_else(jumbophage == FALSE, \"No Jumbo Phage\",\n        \"Jumbo Phage\"\n    )) %&gt;%\n    ggplot(aes(\n        x = jumbophage,\n        y = n\n    )) +\n    geom_col() +\n    scale_y_continuous(\n        expand = c(0, 0),\n        limits = c(0, 30000),\n        breaks = seq(0, 300000, 3000)\n    ) +\n    labs(\n        x = NULL,\n        y = \"Number of phages\"\n    ) +\n    theme(\n        text = element_text(size = 15, family = \"Cabin Sketch\"),\n        panel.background = element_blank(),\n        panel.border = element_rect(colour = \"black\", fill = NA, linewidth = 2)\n    )\n\nggplotly(plot)"
+  },
+  {
+    "objectID": "genome_size.html",
+    "href": "genome_size.html",
+    "title": "Genome size",
+    "section": "",
+    "text": "Warning in geom2trace.default(dots[[1L]][[1L]], dots[[2L]][[1L]], dots[[3L]][[1L]]): geom_GeomSlabinterval() has yet to be implemented in plotly.\n  If you'd like to see this geom implemented,\n  Please open an issue with your example code at\n  https://github.com/ropensci/plotly/issues"
   }
 ]
