@@ -23,12 +23,12 @@ are currently **`r number_genomes `** phage genomes in the NCBI and this number 
 
 ## Data source
 
-The website take advantage of the monthly data set publish by [INPHARED](https://github.com/RyanCook94/inphared). I use the `DateMonthYear_data.tsv`, to create all plots and calculate the number of phages in the database. If you use the dataset please have a look at their [publication](https://www.liebertpub.com/doi/10.1089/phage.2021.0007).
+The website uses the monthly dataset published by [INPHARED](https://github.com/RyanCook94/inphared). I used the `DateMonthYear_data.tsv`, to create all the plots and calculate the number of phages in the database. If you use this dataset, please have a look at their [publication](https://www.liebertpub.com/doi/10.1089/phage.2021.0007).
 
 
 
 ## Updates
-Currently the website is manually updated each month and depends on the [INPHARED](https://github.com/RyanCook94/inphared) dataset. I hope that in the next months I can automate the process.
+At the moment the website is updated manually every month and depends on the [INPHARED](https://github.com/RyanCook94/inphared) dataset. I hope to be able to automate this process in the next few months.
 
 Last update `r today()`
 
