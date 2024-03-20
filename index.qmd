@@ -12,18 +12,24 @@ number_genomes <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
     count()
 ```
 
+::: {.justify}
+
 # Bacteriophage genomes in NCBI
 
 ![](images/logo.png){width=400 fig-align="center"}
 
-There are **`r number_genomes `** in the **NCBI**.
+Phages are the most abundant and diverse biological entities on the planet. However, our knowledge of them is quite limited. There
+are currently **`r number_genomes `** phage genomes in the NCBI and this number will continue to grow as researchers produce sequencing data. **This website provides an overview of the number of [phages and jumbo phages](jumbophages.html), [size](genome_size.html), [molecule type](type_molecule.html) and [host](host.html) of bacteriophage genomes stored in the NCBI.**
 
-## Workflow
+## Data source
+
+The website take advantage of the monthly data set publish by [INPHARED](https://github.com/RyanCook94/inphared). I use the `DateMonthYear_data.tsv`, to create all plots and calculate the number of phages in the database. If you use the dataset please have a look at their [publication](https://www.liebertpub.com/doi/10.1089/phage.2021.0007).
+
 
 
 ## Updates
-Currently the website is manually updated each month. Statistics and plots are created using the monthly published [INPHARED](https://github.com/RyanCook94/inphared) dataset.  
+Currently the website is manually updated each month and depends on the [INPHARED](https://github.com/RyanCook94/inphared) dataset. I hope that in the next months I can automate the process.
 
 Last update `r today()`
 
-## Author
+:::

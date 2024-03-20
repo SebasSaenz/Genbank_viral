@@ -104,6 +104,21 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <div class="quarto-navbar-tools ms-auto">
     <a href="https://twitter.com/SaenzJohanS" title="Quarto Twitter" class="quarto-navigation-tool px-1" aria-label="Quarto Twitter"><i class="bi bi-twitter"></i></a>
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-github"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools ms-auto-item" href="https://github.com/SebasSaenz/genbank_viral">
+            Source Code
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools ms-auto-item" href="https://github.com/SebasSaenz/genbank_viral/issues">
+            Report a Bug
+            </a>
+          </li>
+      </ul>
+    </div>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
@@ -120,9 +135,8 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#bacteriophage-genomes-in-ncbi" id="toc-bacteriophage-genomes-in-ncbi" class="nav-link active" data-scroll-target="#bacteriophage-genomes-in-ncbi">Bacteriophage genomes in NCBI</a>
   <ul class="collapse">
-  <li><a href="#workflow" id="toc-workflow" class="nav-link" data-scroll-target="#workflow">Workflow</a></li>
+  <li><a href="#data-source" id="toc-data-source" class="nav-link" data-scroll-target="#data-source">Data source</a></li>
   <li><a href="#updates" id="toc-updates" class="nav-link" data-scroll-target="#updates">Updates</a></li>
-  <li><a href="#author" id="toc-author" class="nav-link" data-scroll-target="#author">Author</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -153,28 +167,26 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="bacteriophage-genomes-in-ncbi" class="level1">
+<section id="bacteriophage-genomes-in-ncbi" class="level1 justify">
 <h1>Bacteriophage genomes in NCBI</h1>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/logo.png" class="img-fluid figure-img" width="400"></p>
 </figure>
 </div>
-<p>There are <strong>27321</strong> in the <strong>NCBI</strong>.</p>
-<section id="workflow" class="level2">
-<h2 class="anchored" data-anchor-id="workflow">Workflow</h2>
+<p>Phages are the most abundant and diverse biological entities on the planet. However, our knowledge of them is quite limited. There are currently <strong>27321</strong> phage genomes in the NCBI and this number will continue to grow as researchers produce sequencing data. <strong>This website provides an overview of the number of <a href="jumbophages.html">phages and jumbo phages</a>, <a href="genome_size.html">size</a>, <a href="type_molecule.html">molecule type</a> and <a href="host.html">host</a> of bacteriophage genomes stored in the NCBI.</strong></p>
+<section id="data-source" class="level2">
+<h2 class="anchored" data-anchor-id="data-source">Data source</h2>
+<p>The website take advantage of the monthly data set publish by <a href="https://github.com/RyanCook94/inphared">INPHARED</a>. I use the <code>DateMonthYear_data.tsv</code>, to create all plots and calculate the number of phages in the database. If you use the dataset please have a look at their <a href="https://www.liebertpub.com/doi/10.1089/phage.2021.0007">publication</a>.</p>
 </section>
 <section id="updates" class="level2">
 <h2 class="anchored" data-anchor-id="updates">Updates</h2>
-<p>Currently the website is manually updated each month. Statistics and plots are created using the monthly published <a href="https://github.com/RyanCook94/inphared">INPHARED</a> dataset.</p>
-<p>Last update 2024-03-19</p>
+<p>Currently the website is manually updated each month and depends on the <a href="https://github.com/RyanCook94/inphared">INPHARED</a> dataset. I hope that in the next months I can automate the process.</p>
+<p>Last update 2024-03-20</p>
 </section>
-<section id="author" class="level2">
-<h2 class="anchored" data-anchor-id="author">Author</h2>
+</section>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

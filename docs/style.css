@@ -10,4 +10,8 @@ body {
 .quarto-title-meta-heading {
     display: none;
 }
+
+.justify {
+    text-align: justify !important
+  }
 }

@@ -19,6 +19,12 @@ website:
       - icon: twitter
         href: https://twitter.com/SaenzJohanS
         text: Quarto Twitter
+      - icon: github
+        menu:
+          - text: Source Code
+            url:  https://github.com/SebasSaenz/genbank_viral
+          - text: Report a Bug
+            url:  https://github.com/SebasSaenz/genbank_viral/issues
 
   page-footer:
     left: |

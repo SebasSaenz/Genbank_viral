@@ -11,14 +11,14 @@
     "href": "index.html",
     "title": "Home",
     "section": "",
-    "text": "There are 27321 in the NCBI.\n\n\n\n\n\nCurrently the website is manually updated each month. Statistics and plots are created using the monthly published INPHARED dataset.\nLast update 2024-03-19"
+    "text": "Phages are the most abundant and diverse biological entities on the planet. However, our knowledge of them is quite limited. There are currently 27321 phage genomes in the NCBI and this number will continue to grow as researchers produce sequencing data. This website provides an overview of the number of phages and jumbo phages, size, molecule type and host of bacteriophage genomes stored in the NCBI.\n\n\nThe website take advantage of the monthly data set publish by INPHARED. I use the DateMonthYear_data.tsv, to create all plots and calculate the number of phages in the database. If you use the dataset please have a look at their publication.\n\n\n\nCurrently the website is manually updated each month and depends on the INPHARED dataset. I hope that in the next months I can automate the process.\nLast update 2024-03-20"
   },
   {
     "objectID": "index.html#updates",
     "href": "index.html#updates",
     "title": "Home",
     "section": "",
-    "text": "Currently the website is manually updated each month. Statistics and plots are created using the monthly published INPHARED dataset.\nLast update 2024-03-19"
+    "text": "Currently the website is manually updated each month and depends on the INPHARED dataset. I hope that in the next months I can automate the process.\nLast update 2024-03-20"
   },
   {
     "objectID": "jumbophages.html",
@@ -33,5 +33,26 @@
     "title": "Genome size",
     "section": "",
     "text": "Warning in geom2trace.default(dots[[1L]][[1L]], dots[[2L]][[1L]], dots[[3L]][[1L]]): geom_GeomSlabinterval() has yet to be implemented in plotly.\n  If you'd like to see this geom implemented,\n  Please open an issue with your example code at\n  https://github.com/ropensci/plotly/issues"
+  },
+  {
+    "objectID": "index.html#author",
+    "href": "index.html#author",
+    "title": "Home",
+    "section": "",
+    "text": "Hi my name is Johan Sebastián Sáenz and I am a microbial ecologist currently working in the Department of Functional Microbiology of Livestock at the Hohenheim University. I am interested in the main drivers of microbial community structure and function, with special focus on the phage’s role."
+  },
+  {
+    "objectID": "index.html#introduction",
+    "href": "index.html#introduction",
+    "title": "Home",
+    "section": "",
+    "text": "Phages are the most abundant and diverse biological entities on the planet. However, our knowledge of them is quite limited. There are currently 27321 phage genomes in the NCBI and this number will continue to grow as researchers produce sequencing data. This website provides an overview of the number of phages and jumbo phages, size, molecule type and host of bacteriophage genomes stored in the NCBI."
+  },
+  {
+    "objectID": "index.html#data-source",
+    "href": "index.html#data-source",
+    "title": "Home",
+    "section": "",
+    "text": "The website take advantage of the monthly data set publish by INPHARED. I use the DateMonthYear_data.tsv, to create all plots and calculate the number of phages in the database. If you use the dataset please have a look at their publication."
   }
 ]
