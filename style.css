@@ -3,6 +3,8 @@ body {
     display: none;
 }
 
+
+
 .date {
     display: none;
 
@@ -14,4 +16,8 @@ body {
 .justify {
     text-align: justify !important
   }
+}
+
+p {
+    font-size: 22px;
 }

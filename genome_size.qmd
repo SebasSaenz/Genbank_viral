@@ -4,12 +4,17 @@ date: 2022-09-12
 format: html
 ---
 
+# Genome size
+
 ```{r echo = FALSE, message=FALSE}
+#| fig-width: 8
+#| fig-heigth: 7
+#| fig-align: center
+
 library(tidyverse)
-library(plotly)
 library(ggdist)
 
-plot <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
+read_tsv("rawdata/clean_genomes_data.tsv") %>%
     select(genome_lengtn_bp, jumbophage) %>%
     mutate(jumbophage = if_else(jumbophage == FALSE,
         "No Jumbo Phage",
@@ -43,7 +48,7 @@ plot <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
     ) +
     theme(
         text = element_text(
-            size = 25, family = "Cabin Sketch",
+            size = 20,
             color = "black"
         ),
         panel.background = element_blank(),
@@ -51,10 +56,7 @@ plot <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
             color = "grey",
             linewidth = 0.3,
             linetype = 1
-        )
+        ),
+        panel.border = element_rect(colour = "black", fill = NA, linewidth = 1)
     )
-
-ggsave(plot, file = "plots/test.png", dpi = 450, width = 10, height = 5)
-
-ggplotly(plot)
 ```

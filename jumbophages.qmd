@@ -13,17 +13,37 @@ format:
 
 # Jumbophage genomes
 
-Jumbo phage genomes are around 200kb and currently there are 
+```{r message=FALSE}
+#| echo: false
+library(tidyverse)
+
+total <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
+    count()
+
+total_jumbo <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
+    filter(jumbophage == TRUE) %>%
+    count()
+
+perce_jumbo <- round(100 * (total_jumbo / total), 2)
+```
+<br>
+
+::: {.justify}
+Tailed phages with genomes larger than 200 kbp are classified as jumbo phages. Currently there are **`r total`** bacteriophage genomes in the NCBI and only **`r perce_jumbo`%** of them are are classified as jumbo phages.
+:::
+
+<br>
 
 ```{r message=FALSE }
-#| out-width: 70%
-#| out-height: 50%
-
+#| fig-width: 5
+#| fig-heigth: 7
+#| fig-align: center
 
 library(tidyverse)
-library(plotly)
 
-plot <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
+base_color <- c("#d8b365", "#5ab4ac")
+
+read_tsv("rawdata/clean_genomes_data.tsv") %>%
     select(jumbophage) %>%
     count(jumbophage) %>%
     mutate(jumbophage = if_else(jumbophage == FALSE, "No Jumbo Phage",
@@ -31,7 +51,8 @@ plot <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
     )) %>%
     ggplot(aes(
         x = jumbophage,
-        y = n
+        y = n,
+        fill = jumbophage
     )) +
     geom_col() +
     scale_y_continuous(
@@ -39,15 +60,27 @@ plot <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
         limits = c(0, 30000),
         breaks = seq(0, 300000, 3000)
     ) +
+    geom_text(
+        aes(
+            x = jumbophage,
+            y = (n + 1500),
+            label = n
+        ),
+        size = 6
+    ) +
     labs(
         x = NULL,
         y = "Number of phages"
     ) +
+    scale_fill_manual(values = base_color) +
     theme(
-        text = element_text(size = 15, family = "Cabin Sketch"),
+        text = element_text(size = 20),
         panel.background = element_blank(),
-        panel.border = element_rect(colour = "black", fill = NA, linewidth = 2)
+        panel.border = element_rect(
+            colour = "black", fill = NA, linewidth = 1
+        ),
+        legend.position = "none"
     )
 
-ggplotly(plot)
+
 ```

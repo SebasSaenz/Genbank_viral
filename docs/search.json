@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Home",
     "section": "",
-    "text": "Phages are the most abundant and diverse biological entities on the planet. However, our knowledge of them is quite limited. There are currently 27321 phage genomes in the NCBI and this number will continue to grow as researchers produce sequencing data. This website provides an overview of the number of phages and jumbo phages, size, molecule type and host of bacteriophage genomes stored in the NCBI.\n\n\nThe website uses the monthly dataset published by INPHARED. I used the DateMonthYear_data.tsv, to create all the plots and calculate the number of phages in the database. If you use this dataset, please have a look at their publication.\n\n\n\nAt the moment the website is updated manually every month and depends on the INPHARED dataset. I hope to be able to automate this process in the next few months.\nLast update 2024-03-20"
+    "text": "Phages are the most abundant and diverse biological entities on the planet. However, our knowledge of them is quite limited. There are currently 27321 phage genomes in the NCBI and this number will continue to grow as researchers produce sequencing data. This website provides an overview of the number of phages and jumbo phages, size, molecule type and host of bacteriophage genomes stored in the NCBI.\n\n\nThe website uses the monthly dataset published by INPHARED. I used the DateMonthYear_data.tsv, to create all the plots and calculate the number of phages in the database. If you use this dataset, please have a look at their publication.\n\n\n\nAt the moment the website is updated manually every month and depends on the INPHARED dataset. I hope to be able to automate this process in the next few months.\nLast update 2024-03-29"
   },
   {
     "objectID": "index.html#data-source",
@@ -25,20 +25,20 @@
     "href": "index.html#updates",
     "title": "Home",
     "section": "",
-    "text": "At the moment the website is updated manually every month and depends on the INPHARED dataset. I hope to be able to automate this process in the next few months.\nLast update 2024-03-20"
+    "text": "At the moment the website is updated manually every month and depends on the INPHARED dataset. I hope to be able to automate this process in the next few months.\nLast update 2024-03-29"
   },
   {
     "objectID": "jumbophages.html",
     "href": "jumbophages.html",
     "title": "Jumbo Phages",
     "section": "",
-    "text": "Jumbophage genomes\nJumbo phage genomes are around 200kb and currently there are\n\n\nShow the code\nlibrary(tidyverse)\nlibrary(plotly)\n\nplot &lt;- read_tsv(\"rawdata/clean_genomes_data.tsv\") %&gt;%\n    select(jumbophage) %&gt;%\n    count(jumbophage) %&gt;%\n    mutate(jumbophage = if_else(jumbophage == FALSE, \"No Jumbo Phage\",\n        \"Jumbo Phage\"\n    )) %&gt;%\n    ggplot(aes(\n        x = jumbophage,\n        y = n\n    )) +\n    geom_col() +\n    scale_y_continuous(\n        expand = c(0, 0),\n        limits = c(0, 30000),\n        breaks = seq(0, 300000, 3000)\n    ) +\n    labs(\n        x = NULL,\n        y = \"Number of phages\"\n    ) +\n    theme(\n        text = element_text(size = 15, family = \"Cabin Sketch\"),\n        panel.background = element_blank(),\n        panel.border = element_rect(colour = \"black\", fill = NA, linewidth = 2)\n    )\n\nggplotly(plot)"
+    "text": "Jumbophage genomes\n\n\nTailed phages with genomes larger than 200 kbp are classified as jumbo phages. Currently there are 27321 bacteriophage genomes in the NCBI and only 2.25% of them are are classified as jumbo phages.\n\n\n\n\nShow the code\nlibrary(tidyverse)\n\nbase_color &lt;- c(\"#d8b365\", \"#5ab4ac\")\n\nread_tsv(\"rawdata/clean_genomes_data.tsv\") %&gt;%\n    select(jumbophage) %&gt;%\n    count(jumbophage) %&gt;%\n    mutate(jumbophage = if_else(jumbophage == FALSE, \"No Jumbo Phage\",\n        \"Jumbo Phage\"\n    )) %&gt;%\n    ggplot(aes(\n        x = jumbophage,\n        y = n,\n        fill = jumbophage\n    )) +\n    geom_col() +\n    scale_y_continuous(\n        expand = c(0, 0),\n        limits = c(0, 30000),\n        breaks = seq(0, 300000, 3000)\n    ) +\n    geom_text(\n        aes(\n            x = jumbophage,\n            y = (n + 1500),\n            label = n\n        ),\n        size = 6\n    ) +\n    labs(\n        x = NULL,\n        y = \"Number of phages\"\n    ) +\n    scale_fill_manual(values = base_color) +\n    theme(\n        text = element_text(size = 20),\n        panel.background = element_blank(),\n        panel.border = element_rect(\n            colour = \"black\", fill = NA, linewidth = 1\n        ),\n        legend.position = \"none\"\n    )"
   },
   {
     "objectID": "genome_size.html",
     "href": "genome_size.html",
     "title": "Genome size",
     "section": "",
-    "text": "Warning in geom2trace.default(dots[[1L]][[1L]], dots[[2L]][[1L]], dots[[3L]][[1L]]): geom_GeomSlabinterval() has yet to be implemented in plotly.\n  If you'd like to see this geom implemented,\n  Please open an issue with your example code at\n  https://github.com/ropensci/plotly/issues"
+    "text": "Genome size"
   }
 ]
