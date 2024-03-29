@@ -2,4 +2,4 @@
 
 Monthly plots of Bacteriophages found in Genbank by INPHARED
 
-![](images/logo.png){width=400 fig-align="center"}
+<img src="images/logo.png"  width="60%" height="30%">
