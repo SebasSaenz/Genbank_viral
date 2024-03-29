@@ -36,3 +36,5 @@ format:
     theme: minty
     css: style.css
     toc: true
+execute:
+  freeze: auto

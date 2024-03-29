@@ -8,7 +8,8 @@ format:
         highlight-style: github
         code-block-border-left: true
         code-copy: true
-
+execute:
+  freeze: auto
 ---
 
 # Jumbophage genomes
@@ -26,7 +27,6 @@ total_jumbo <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
 
 perce_jumbo <- round(100 * (total_jumbo / total), 2)
 ```
-<br>
 
 ::: {.justify}
 Tailed phages with genomes larger than 200 kbp are classified as jumbo phages. Currently there are **`r total`** bacteriophage genomes in the NCBI and only **`r perce_jumbo`%** of them are are classified as jumbo phages.
@@ -81,6 +81,4 @@ read_tsv("rawdata/clean_genomes_data.tsv") %>%
         ),
         legend.position = "none"
     )
-
-
 ```
