@@ -7,41 +7,69 @@ format: html
 # Genome size
 
 ```{r echo = FALSE, message=FALSE}
-#| fig-width: 8
-#| fig-heigth: 7
+library(tidyverse)
+
+df <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
+    select(genome_length_bp, jumbophage)
+
+mean_df <- df %>%
+    group_by(jumbophage) %>%
+    summarize(mean_length = mean(genome_length_bp))
+
+lenght_jumbo <- round(mean_df[2, 2] / 1000, )
+lenght_no_jumbo <- round(mean_df[1, 2] / 1000)
+
+max_length <- round(max(df$genome_length_bp) / 1000)
+
+```
+
+The average genomes size of the jumbophages is `r lenght_jumbo` kbp while `r lenght_no_jumbo` kbp for no jumbophages. The longest jumbophage in the database has a genome length of `r max_length` kbp.
+
+
+```{r echo = FALSE, message=FALSE}
+#| fig-width: 9
+#| fig-heigth: 5
 #| fig-align: center
 
 library(tidyverse)
 library(ggdist)
 
+base_color <- c("#d8b365", "#5ab4ac")
+
 read_tsv("rawdata/clean_genomes_data.tsv") %>%
-    select(genome_lengtn_bp, jumbophage) %>%
+    select(genome_length_bp, jumbophage) %>%
     mutate(jumbophage = if_else(jumbophage == FALSE,
         "No Jumbo Phage",
         "Jumbo Phage"
-    ), genome_lengtn_kbp = genome_lengtn_bp / 1000) %>%
+    ), genome_length_bp = genome_length_bp / 1000) %>%
     ggplot(aes(
         y = jumbophage,
-        x = genome_lengtn_kbp
+        x = genome_length_bp
     )) +
     ggdist::stat_halfeye(
+        aes(fill = jumbophage),
         adjust = .5,
-        width = .6,
+        width = 0.1,
         .width = 0,
         justification = -.3,
         point_colour = NA,
-        fill = "lightblue",
         color = "black"
     ) +
     geom_boxplot(
         width = .3,
-        outlier.color = NA
+        outlier.color = NA,
+        alpha = 0.3,
+        aes(
+            color = jumbophage,
+            fill = jumbophage
+        )
     ) +
     scale_x_continuous(
-        expand = c(0.001, .001),
         limits = c(0, 500),
         breaks = seq(0, 500, 50)
     ) +
+    scale_colour_manual(values = base_color) +
+    scale_fill_manual(values = base_color) +
     labs(
         y = NULL,
         x = "Genome size (kbp)"
@@ -55,8 +83,9 @@ read_tsv("rawdata/clean_genomes_data.tsv") %>%
         panel.grid.major.x = element_line(
             color = "grey",
             linewidth = 0.3,
-            linetype = 1
+            linetype = 2
         ),
-        panel.border = element_rect(colour = "black", fill = NA, linewidth = 1)
+        # panel.border = element_rect(colour = "black", fill = NA, linewidth = 1),
+        legend.position = "none"
     )
 ```
