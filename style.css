@@ -1,0 +1,23 @@
+body {
+.title {
+    display: none;
+}
+
+
+
+.date {
+    display: none;
+
+}
+.quarto-title-meta-heading {
+    display: none;
+}
+
+.justify {
+    text-align: justify !important
+  }
+}
+
+p {
+    font-size: 22px;
+}
