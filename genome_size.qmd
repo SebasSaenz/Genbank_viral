@@ -5,6 +5,7 @@ format: html
 ---
 
 # Genome size
+<br>
 
 ```{r echo = FALSE, message=FALSE}
 library(tidyverse)
@@ -25,6 +26,7 @@ max_length <- round(max(df$genome_length_bp) / 1000)
 
 The average genomes size of the jumbophages is `r lenght_jumbo` kbp while `r lenght_no_jumbo` kbp for no jumbophages. The longest jumbophage in the database has a genome length of `r max_length` kbp.
 
+<br>
 
 ```{r echo = FALSE, message=FALSE}
 #| fig-width: 9
