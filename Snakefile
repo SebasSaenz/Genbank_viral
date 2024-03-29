@@ -2,7 +2,7 @@ rule targets:
     input:
         "rawdata/genomes_data.tsv",
         "rawdata/clean_genomes_data.tsv",
-        "docs/index.html"
+        "_site/index.html"
 
 rule get_data:
     input:
@@ -32,7 +32,7 @@ rule render_website:
         qmd = "index.qmd",
         data = "rawdata/clean_genomes_data.tsv"
     output:
-        "docs/index.html"
+        "_site/index.html"
     shell:
         """
         quarto render
