@@ -3,8 +3,6 @@ title: "Home"
 date: 2024-03-15
 format: 
     html: default
-execute:
-  freeze: auto
 ---
 
 ```{r echo=FALSE, message=FALSE}

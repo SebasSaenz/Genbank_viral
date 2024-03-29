@@ -2,8 +2,6 @@
 title: "Jumbo Phages"
 date: 2022-09-12
 format: html
-execute:
-  freeze: auto
 ---
 
 hjshadhahdsa

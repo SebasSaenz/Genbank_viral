@@ -8,8 +8,6 @@ format:
         highlight-style: github
         code-block-border-left: true
         code-copy: true
-execute:
-  freeze: auto
 ---
 
 # Genome size
