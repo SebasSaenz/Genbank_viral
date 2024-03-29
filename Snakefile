@@ -26,16 +26,6 @@ rule clean_data:
         """
         {input.r_script}
         """
-rule plot_data:
-    input:
-        r_script = "code/plot_data.R",
-        data = "rawdata/clean_genomes_data.tsv"
-    output:
-        "plots/genbank.png"
-    shell:
-        """
-        {input.r_script}
-        """
 
 rule render_website:
     input:

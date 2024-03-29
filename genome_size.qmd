@@ -50,8 +50,8 @@ base_color <- c("#d8b365", "#5ab4ac")
 read_tsv("rawdata/clean_genomes_data.tsv") %>%
     select(genome_length_bp, jumbophage) %>%
     mutate(jumbophage = if_else(jumbophage == FALSE,
-        "No Jumbo Phage",
-        "Jumbo Phage"
+        "Phage",
+        "Jumbophage"
     ), genome_length_bp = genome_length_bp / 1000) %>%
     ggplot(aes(
         y = jumbophage,
