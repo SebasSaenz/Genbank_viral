@@ -1,17 +1,24 @@
 [
   {
+    "objectID": "type_molecule.html",
+    "href": "type_molecule.html",
+    "title": "Phage type",
+    "section": "",
+    "text": "Genome molecule type\nBacteriophage genomes can be compose of DNA or RNA. In the NCBI the majority of bacteriophages have a DNA genome (96.9%) followed by ss-DNA genomes (2.9%).\n\n\n\nShow the code\nlibrary(tidyverse)\nlibrary(patchwork)\n\ndf &lt;- read_tsv(\"rawdata/clean_genomes_data.tsv\") %&gt;%\n    select(molecule, jumbophage) %&gt;%\n    count(molecule, jumbophage) %&gt;%\n    mutate(\n        percent = 100 * (n / sum(n)),\n        jumbophage = if_else(jumbophage == FALSE, \"Phage\",\n            \"Jumbophage\"\n        ),\n        molecule = factor(molecule,\n            levels = c(\"DNA\", \"ss-DNA\", \"RNA\", \"ds-RNA\", \"ss-RNA\", \"cRNA\", \"mRNA\")\n        )\n    )\n\nbase_color &lt;- c(\"#d8b365\", \"#5ab4ac\")\n\np1 &lt;- df %&gt;%\n    ggplot(aes(\n        x = molecule,\n        y = percent,\n        fill = jumbophage\n    )) +\n    geom_col() +\n    scale_y_continuous(\n        expand = c(0, 0),\n        limits = c(0, 100),\n        breaks = seq(0, 100, 10)\n    ) +\n    scale_fill_manual(values = base_color) +\n    labs(\n        y = \"Number of phages (%)\",\n        x = NULL\n    ) +\n    theme(\n        text = element_text(size = 20),\n        panel.background = element_blank(),\n        panel.border = element_rect(\n            colour = \"black\", fill = NA, linewidth = 1\n        ),\n        legend.position = \"bottom\",\n        legend.title = element_blank()\n    )\n\n\np2 &lt;- df %&gt;%\n    filter(!molecule == \"DNA\" & !molecule == \"ss-DNA\") %&gt;%\n    ggplot(aes(\n        x = molecule,\n        y = percent,\n        fill = jumbophage\n    )) +\n    geom_col() +\n    scale_y_continuous(\n        expand = c(0, 0),\n        limits = c(0, 0.2),\n        breaks = seq(0, 0.2, 0.05)\n    ) +\n    scale_fill_manual(values = \"#5ab4ac\") +\n    labs(\n        y = \"Number of phages (%)\",\n        x = NULL\n    ) +\n    theme(\n        text = element_text(size = 12),\n        panel.background = element_blank(),\n        panel.border = element_rect(\n            colour = \"black\", fill = NA, linewidth = 0.5\n        ),\n        legend.position = \"none\"\n    )\n\np1 +\n    inset_element(p2, left = 0.35, bottom = 0.4, right = 0.95, top = 0.95)"
+  },
+  {
     "objectID": "host.html",
     "href": "host.html",
     "title": "Jumbo Phages",
     "section": "",
-    "text": "hjshadhahdsa"
+    "text": "Bacteriophage host\n\nBacteriophages in the NCBI are associated with 310 different hosts. Most of the bacteriophages are linked to Mycobacterium (3043), followed by Escherichia (2347), Pseudomonas (1402) and Salmonella (1258). Additionally, for a big portion of the phages (2922) the host is unknowm.\n\n\n\n\nShow the code\nlibrary(tidyverse)\n\n\ndf &lt;- read_tsv(\"rawdata/clean_genomes_data.tsv\") %&gt;%\n    select(host) %&gt;%\n    count(host) %&gt;%\n    filter(n &gt; 100) %&gt;%\n    arrange(n) %&gt;%\n    mutate(host = factor(host, host))\n\ndf %&gt;%\n    ggplot(aes(\n        x = n,\n        y = host\n    )) +\n    geom_segment(\n        aes(\n            x = 0,\n            xend = n,\n            y = host,\n            yend = host\n        ),\n        color = ifelse(df$host %in% \"Mycobacterium\", \"orange\", \"black\"),\n        linewidth = ifelse(df$host %in% \"Mycobacterium\", 1.3, 0.7)\n    ) +\n    geom_point(\n        size = 3,\n        color = ifelse(df$host %in% \"Mycobacterium\", \"orange\", \"black\")\n    ) +\n    scale_x_continuous(\n        expand = c(0, 0),\n        limits = c(0, 3400),\n        breaks = seq(0, 3300, 300)\n    ) +\n    labs(\n        x = \"Number of bacteriophages\",\n        y = \"Bacteriophage host\"\n    ) +\n    theme(\n        axis.text.y = element_text(\n            size = 12,\n            face = \"italic\"\n        ),\n        axis.text.x = element_text(size = 15),\n        axis.title.x = element_text(\n            size = 20,\n            face = \"bold\"\n        ),\n        axis.title.y = element_text(\n            size = 20,\n            face = \"bold\"\n        ),\n        panel.background = element_blank(),\n        panel.grid.minor = element_line(\n            color = \"grey\",\n            linetype = 2\n        ),\n        legend.position = \"none\"\n    )"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Home",
     "section": "",
-    "text": "Phages are the most abundant and diverse biological entities on the planet. However, our knowledge of them is quite limited. There are currently 27321 phage genomes in the NCBI and this number will continue to grow as researchers produce sequencing data. This website provides an overview of the number of phages and jumbo phages, size, molecule type and host of bacteriophage genomes stored in the NCBI.\n\n\nThe website uses the monthly dataset published by INPHARED. I used the DateMonthYear_data.tsv, to create all the plots and calculate the number of phages in the database. If you use this dataset, please have a look at their publication.\n\n\n\nAt the moment the website is updated manually every month and depends on the INPHARED dataset. I hope to be able to automate this process in the next few months.\nLast update 2024-03-29"
+    "text": "Phages are the most abundant and diverse biological entities on the planet. However, our knowledge of them is quite limited. There are currently 27321 phage genomes in the NCBI and this number will continue to grow as researchers produce sequencing data. This website provides an overview of the number of phages and jumbo phages, size, molecule type and host of bacteriophage genomes stored in the NCBI.\n\n\nThe website uses the monthly dataset published by INPHARED. I used the DateMonthYear_data.tsv, to create all the plots and calculate the number of phages in the database. If you use this dataset, please have a look at their publication.\n\n\n\nAt the moment the website is updated manually every month and depends on the INPHARED dataset. I hope to be able to automate this process in the next few months.\nLast update 2024-03-30"
   },
   {
     "objectID": "index.html#data-source",
@@ -25,7 +32,7 @@
     "href": "index.html#updates",
     "title": "Home",
     "section": "",
-    "text": "At the moment the website is updated manually every month and depends on the INPHARED dataset. I hope to be able to automate this process in the next few months.\nLast update 2024-03-29"
+    "text": "At the moment the website is updated manually every month and depends on the INPHARED dataset. I hope to be able to automate this process in the next few months.\nLast update 2024-03-30"
   },
   {
     "objectID": "jumbophages.html",
