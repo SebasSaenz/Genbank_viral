@@ -1,14 +1,38 @@
 ---
 title: "Jumbo Phages"
 date: 2024-03-30
-format: html
+format:
+    html:
+        code-fold: true
+        code-summary: "Show the code"
+        highlight-style: github
+        code-block-border-left: true
+        code-copy: true
 ---
 # Bacteriophage host
-hjshadhahdsa
+
+```{r echo=FALSE, message=FALSE}
+library(tidyverse)
+
+df <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
+    select(host) %>%
+    count(host)
+
+total_host <- count(df) - 1
+myco <- df[df$host == "Mycobacterium", "n"]
+esche <- df[df$host == "Escherichia", "n"]
+pseudo <- df[df$host == "Pseudomonas", "n"]
+salmo <- df[df$host == "Salmonella", "n"]
+unspe <- df[df$host == "Unspecified", "n"]
+```
+
+::: {.justify}
+Bacteriophages in the NCBI are associated with `r total_host` different hosts. Most of the bacteriophages are linked to *Mycobacterium* (`r myco`), followed by *Escherichia* (`r esche`), *Pseudomonas* (`r pseudo`) and *Salmonella* (`r salmo`). Additionally, for a big portion of the phages (`r unspe`) the host is unknowm.
+:::
 
 <br>
 
-```{r echo = FALSE, message=FALSE}
+```{r message=FALSE}
 #| fig-width: 10
 #| fig-height: 10
 library(tidyverse)
@@ -20,8 +44,6 @@ df <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
     filter(n > 100) %>%
     arrange(n) %>%
     mutate(host = factor(host, host))
-
-
 
 df %>%
     ggplot(aes(
