@@ -36,8 +36,8 @@ The average genomes size of the jumbophages is `r lenght_jumbo` kbp while `r len
 <br>
 
 ```{r message=FALSE}
-#| fig-width: 9
-#| fig-heigth: 5
+#| fig-width: 10
+#| fig-heigth: 8
 #| fig-align: center
 
 library(tidyverse)
