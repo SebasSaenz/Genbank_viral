@@ -1,38 +1,75 @@
 ---
 title: "Jumbo Phages"
-date: 2022-09-12
+date: 2024-03-30
 format: html
 ---
-
+# Bacteriophage host
 hjshadhahdsa
 
-```{r echo = FALSE, message=FALSE}
-library(tidyverse)
-library(plotly)
+<br>
 
-plot <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
+```{r echo = FALSE, message=FALSE}
+#| fig-width: 10
+#| fig-height: 10
+library(tidyverse)
+
+
+df <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
     select(host) %>%
     count(host) %>%
-    filter(n > 50) %>%
+    filter(n > 100) %>%
+    arrange(n) %>%
+    mutate(host = factor(host, host))
+
+
+
+df %>%
     ggplot(aes(
         x = n,
-        y = fct_reorder(host, n)
+        y = host
     )) +
-    geom_col() +
+    geom_segment(
+        aes(
+            x = 0,
+            xend = n,
+            y = host,
+            yend = host
+        ),
+        color = ifelse(df$host %in% "Mycobacterium", "orange", "black"),
+        linewidth = ifelse(df$host %in% "Mycobacterium", 1.3, 0.7)
+    ) +
+    geom_point(
+        size = 3,
+        color = ifelse(df$host %in% "Mycobacterium", "orange", "black")
+    ) +
     scale_x_continuous(
         expand = c(0, 0),
-        limits = c(0, 3500),
-        breaks = seq(0, 3500, 500)
+        limits = c(0, 3400),
+        breaks = seq(0, 3300, 300)
     ) +
     labs(
-        x = NULL,
-        y = "Number of phages"
+        x = "Number of bacteriophages",
+        y = "Bacteriophage host"
     ) +
     theme(
-        text = element_text(size = 12, family = "Cabin Sketch"),
+        axis.text.y = element_text(
+            size = 12,
+            face = "italic"
+        ),
+        axis.text.x = element_text(size = 15),
+        axis.title.x = element_text(
+            size = 20,
+            face = "bold"
+        ),
+        axis.title.y = element_text(
+            size = 20,
+            face = "bold"
+        ),
         panel.background = element_blank(),
-        panel.border = element_rect(colour = "black", fill = NA, linewidth = 2)
+        panel.grid.minor = element_line(
+            color = "grey",
+            linetype = 2
+        ),
+        legend.position = "none"
     )
-
-ggplotly(plot)
 ```

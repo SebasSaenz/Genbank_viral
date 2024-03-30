@@ -1,16 +1,40 @@
 ---
 title: "Phage type"
-date: 2024-03-16
-format: html
+date: 2024-03-30
+format:
+    html:
+        code-fold: true
+        code-summary: "Show the code"
+        highlight-style: github
+        code-block-border-left: true
+        code-copy: true
 ---
 
 # Genome molecule type
 
-blablalbalbalbl
+```{r echo=FALSE, message=FALSE }
+
+library(tidyverse)
+
+df <- read_tsv("rawdata/clean_genomes_data.tsv") %>%
+    select(molecule) %>%
+    count(molecule) %>%
+    mutate(
+        percent = 100 * (n / sum(n)),
+        molecule = factor(molecule,
+            levels = c("DNA", "ss-DNA", "RNA", "ds-RNA", "ss-RNA", "cRNA", "mRNA")
+        )
+    )
+
+dna_per <- round(df[df$molecule == "DNA", "percent"], 1)
+ss_dna_per <- round(df[df$molecule == "ss-DNA", "percent"], 1)
+```
+
+Bacteriophage genomes can be compose of DNA or RNA. In the NCBI the majority of bacteriophages have a DNA genome **(`r dna_per`%)** followed by ss-DNA genomes **(`r ss_dna_per`%)**.
 
 <br>
 
-```{r echo = FALSE, message=FALSE}
+```{r message=FALSE}
 library(tidyverse)
 library(patchwork)
 
@@ -78,6 +102,9 @@ p2 <- df %>%
     theme(
         text = element_text(size = 12),
         panel.background = element_blank(),
+        panel.border = element_rect(
+            colour = "black", fill = NA, linewidth = 0.5
+        ),
         legend.position = "none"
     )
 
