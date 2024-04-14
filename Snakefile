@@ -10,7 +10,7 @@ rule get_data:
     output:
         "rawdata/genomes_data.tsv"
     params:
-       file = "1Mar2024_data.tsv.gz"
+       file = "3Apr2024_data.tsv.gz"
     shell:
         """
         {input.script} {params.file}
